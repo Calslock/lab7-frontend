@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t spglab/lab21 -f Dockerfile.dev1 .
+
+script:
+  - docker run -e CI=true spglab/lab21 npm run test
